@@ -115,6 +115,16 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
+  void deleteFromDatabase({
+    required int id,
+  }){
+    database.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value){
+      getTasks(database);
+      emit(AppDeleteFromDatabaseState());
+    });
+  }
+
+
   void changeBottomSheetState({
     required bool isShow,
     required Icon icon
@@ -123,6 +133,7 @@ class AppCubit extends Cubit<AppStates> {
     floatingBtnIcon=icon;
     emit(AppChangeBottomSheetState());
   }
+
 
 
 
