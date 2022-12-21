@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:note_app/shared/cubit/todo_cubit.dart';
 
 Widget defaultTextFormField({
@@ -153,3 +154,5 @@ Widget todoItem({
 
   ),
 );
+
+void showToast(String message)=>Fluttertoast.showToast(msg: message);

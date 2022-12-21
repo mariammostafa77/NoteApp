@@ -7,6 +7,7 @@ import 'package:sqflite/sqflite.dart';
 import '../../modules/archive_tasks/archive_tasks.dart';
 import '../../modules/done_tasks/done_tasks.dart';
 import '../../modules/tasks_screen/tasks_screen.dart';
+import '../components/components.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitState());
@@ -111,6 +112,7 @@ class AppCubit extends Cubit<AppStates> {
         'UPDATE tasks SET status = ?WHERE id = ?',
         ['$status', id]).then((value){
           getTasks(database);
+          showToast('Task move to $status Tasks');
           emit(AppUpdateDatabaseState());
     });
   }
